@@ -33,7 +33,8 @@ function TodoContainer({ children }) {
   const createUser = (userName, userPrice, callBack) => {
     try {
       const newTodoId = generateIncrementalIdsFromListOfObj(products.todoList);
-      addNewUserData(userName, userPrice);
+      const data = addNewUserData(userName, userPrice);
+      console.log("Data is : ", data);
 
       setProducts((prev) => {
         return {
