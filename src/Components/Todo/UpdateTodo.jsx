@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function UpdateTodo({ updateUserCurrentValue, UpdateTodo }) {
   const { name, price, id } = updateUserCurrentValue;
-  console.log("value for name is : " + name + "value for price " + price);
+  // console.log("value for name is : " + name + "value for price " + price);
   const [userName, setUserName] = useState("");
   const [userPrice, setUserPrice] = useState("");
   const [update, setUpdate] = useState(false);
