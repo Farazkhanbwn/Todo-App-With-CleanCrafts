@@ -71,11 +71,9 @@ function TodoContainer({ children }) {
   };
 
   const updateUserData = (id) => {
-    const userCurrentData = products.todoList.filter((userData) => {
-      if (userData.id === id) {
-        return userData;
-      }
-    });
+    const userCurrentData = products.todoList.filter(
+      (userData) => userData?.id === id
+    );
     setUserCurrentData({ ...userCurrentData[0] });
   };
 
