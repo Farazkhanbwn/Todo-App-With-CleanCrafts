@@ -35,11 +35,7 @@ export const renderImages = (group, imageLength, setLink, handleImageChanger) =>
     }
     return null;
   };
-
-  // utils.js
-
-import React from 'react';
-
+  
 export const renderOptions = (group, imageLengthMobile) => {
   if (group.mainImage.length > imageLengthMobile) {
     return (
