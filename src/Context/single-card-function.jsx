@@ -6,7 +6,7 @@ export const renderImages = (group, imageLength, setLink, handleImageChanger) =>
           // key={image?.color ?? ""}
           onMouseEnter={() => setLink(image.image)}
           onClick={(e) => handleImageChanger(e, image.image)}
-          className="d-flex card-imgChanger-img border-radius-5 _img_product-imgchange bg-light"
+          className="d-flex card-imgChanger-img border-radius-5 _img_product-imgchange"
         >
           <Image src={image.image} />
         </div>
@@ -35,11 +35,7 @@ export const renderImages = (group, imageLength, setLink, handleImageChanger) =>
     }
     return null;
   };
-
-  // utils.js
-
-import React from 'react';
-
+  
 export const renderOptions = (group, imageLengthMobile) => {
   if (group.mainImage.length > imageLengthMobile) {
     return (
