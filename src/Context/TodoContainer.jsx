@@ -6,7 +6,7 @@ import {
   addNewUserData,
   deleteUserDataFromNetwork,
   updateUser,
-} from "./TodoServices";
+} from "./TodoServiceAxios";
 import { TodoProvider } from "./TodoContext";
 import { generateIncrementalIdsFromListOfObj } from "../helpers";
 
