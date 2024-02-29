@@ -6,7 +6,7 @@ import {
   addNewUserData,
   deleteUserDataFromNetwork,
   updateUser,
-} from "./TodoServices";
+} from "./TodoServiceAxios";
 import { TodoProvider } from "./TodoContext";
 import { generateIncrementalIdsFromListOfObj } from "../helpers";
 
@@ -77,21 +77,42 @@ function TodoContainer({ children }) {
     setUserCurrentData({ ...userCurrentData[0] });
   };
 
+  // const updateTodo = async (name, price, id, callBack) => {
+  //   try {
+  //     await updateUser(name, price, id);
+  //     setProducts((prev) => {
+  //       const remainingTodo = prev.todoList.filter((todo) => todo.id !== id);
+  //       console.log("RemainingTodo is : " + remainingTodo[0].name);
+  //       return {
+  //         ...prev,
+  //         todoList: [...remainingTodo, { name: name, price: price, id: id }],
+  //       };
+  //     });
+  //   } catch (error) {
+  //     console.error("delelting Error = " + error);
+  //   } finally {
+  //     callBack();
+  //   }
+  // };
+
   const updateTodo = async (name, price, id, callBack) => {
     try {
       await updateUser(name, price, id);
       setProducts((prev) => {
-        const remainingTodo = prev.todoList.filter((todo) => todo.id !== id);
-        console.log("RemainingTodo is : " + remainingTodo[0].name);
-        return {
-          ...prev,
-          todoList: [...remainingTodo, { name: name, price: price, id: id }],
-        };
+        const updatedTodoList = prev.todoList.map((todo) => {
+          if (todo.id === id) {
+            // Update the properties of the matching todo item
+            return { ...todo, name: name, price: price };
+          } else {
+            return todo; // Keep other todo items unchanged
+          }
+        });
+        return { ...prev, todoList: updatedTodoList };
       });
     } catch (error) {
-      console.error("delelting Error = " + error);
+      console.error("Updating Error:", error);
     } finally {
-      callBack();
+      callBack(); // Execute the callback function regardless of success or failure
     }
   };
 
